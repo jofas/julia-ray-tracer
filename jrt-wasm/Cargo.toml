@@ -1,0 +1,15 @@
+[package]
+name = "jrt-wasm"
+version = "0.1.0"
+authors = ["jofas <jonas@fc-web.de>"]
+edition = "2018"
+
+[dependencies]
+stdweb        = "*"
+stdweb-derive = "*"
+serde         = "1.0.0"
+serde_derive  = "1.0.0"
+quaternion    = "*"
+
+[build-dependencies]
+webgl_generator = "*"

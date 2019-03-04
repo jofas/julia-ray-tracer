@@ -1,0 +1,74 @@
+<!DOCTYPE=html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <style>
+      body {
+        overflow: hidden;
+        background-color: #221F20;
+      }
+      canvas {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: 0;
+        padding: 0;
+        transform: translate(-50%, -50%);
+      }
+      svg {
+        position: absolute;
+        left: 0;
+        bottom: 10%;
+        margin: 0;
+        padding: 0;
+        transform: translate(0, -10%);
+      }
+
+      line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 0.4s linear forwards;
+      }
+
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="90%"
+      id="fallback"
+    ></svg>
+    <script src="l-system.js"></script>
+    <script>
+      const wasm_support = function() {
+        try {
+          if (
+            typeof WebAssembly === 'object' &&
+            typeof WebAssembly.instantiate === 'function'
+          ) {
+            const module = new WebAssembly.Module(
+              Uint8Array.of( 0x0, 0x61, 0x73, 0x6d, 0x01
+                           , 0x00, 0x00, 0x00 )
+            );
+            if ( module instanceof WebAssembly.Module)
+              return new WebAssembly.Instance(module)
+                instanceof WebAssembly.Instance;
+          }
+        } catch (e) {}
+        return false;
+      }();
+
+      if (!wasm_support) { fallback(); }
+    </script>
+    <canvas id="c"></canvas>
+    <script src="jrt-wasm.js"></script>
+    <h1>HALLOOO</h1>
+  </body>
+</html>
