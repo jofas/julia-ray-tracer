@@ -79,7 +79,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _LightingEnabled: 0
-    - _MaxIter: 15
+    - _MaxIter: 10
     - _Metallic: 0
     - _Mode: 0
     - _NormalIter: 10
@@ -103,8 +103,8 @@ Material:
     - _Center: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _ColorCube: {r: 0, g: 0, b: 0, a: 1}
+    - _ColorCube: {r: 0.13333334, g: 0.12156863, b: 0.1254902, a: 1}
     - _ColorSphere: {r: 0.9245283, g: 0.08721964, b: 0.19221541, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Mu: {r: 0.3, g: 0.16, b: 0.049219757, a: -0.69}
+    - _Mu: {r: -0.102918655, g: -0.487308, b: -0.06897166, a: 0.30248266}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}

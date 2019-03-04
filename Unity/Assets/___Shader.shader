@@ -125,6 +125,18 @@ Shader "___Shader"
               return N;
             }
 
+            float3 Phong( float3 light, float3 eye, float3 pt, float3 N ) {
+              float3 diffuse = float3( 0.24, 0.36, 0.49 ); // base color of shading
+              const int specularExponent = 2;             // shininess of shading
+              const float specularity = 0.45;              // amplitude of specular highlight
+              float3 L     = normalize( light - pt );  // find the vector to the light
+              float3 E     = normalize( eye   - pt );  // find the vector to the eye
+              float  NdotL = dot( N, L );              // find the cosine of the angle between light and normal
+              float3 R     = L - 2 * NdotL * N;        // find the reflected vector
+              diffuse += abs( N )*0.3;  // add some of the normal to the
+              return diffuse * max( NdotL, 0 ) + specularity*pow( max(dot(E,R),0), specularExponent );
+            }
+
             fixed4 frag(v2f i) : SV_Target {
               float3 viewDirection = normalize(
                 i.worldPos - _WorldSpaceCameraPos
@@ -138,7 +150,9 @@ Shader "___Shader"
 
               if (dist < _Epsilon) {
                 float3 N = normEstimate( worldPos, _Mu );
-                color = float4((N * 0.5 + 0.5), 1.0);
+                // use the normals as color
+                //color = float4((N * 0.5 + 0.5), 1.0);
+                color = float4(Phong( float3(4.0, 4.0, 2.0), viewDirection, worldPos, N), 1.0);
               }
               return color;
             }
