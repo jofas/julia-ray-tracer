@@ -34,8 +34,10 @@ use webgl2::{ WebGL2RenderingContext as gl
 // Camera radius
 static CR: f32 = 6.;
 
-static _BOUNDINGSPHERERADIUS: f32 = 5.0;
-static _THRESHOLD: f32 = 4.0;
+static JULIA_ANIM_F: f32 = 2.;
+
+static _BOUNDINGSPHERERADIUS: f32 = 5.;
+static _THRESHOLD: f32 = 4.;
 static _EPSILON: f32 = 1e-3;
 
 static _MAXITER: i32 = 8;
@@ -525,8 +527,8 @@ fn random_f32() -> f32 {
 
 fn random_arc() -> f32 { random_f32() * 2.0 * PI }
 
-fn random_vec4_sphere() -> Vector4 {
-  let r     = random_f32();
+fn random_vec4_sphere(radius_factor: f32) -> Vector4 {
+  let r     = random_f32() * radius_factor;
   let alpha = random_arc();
   let beta  = random_arc();
   let gamma = random_arc();
@@ -667,8 +669,8 @@ impl State {
         p3: Vector2::new(random_arc(), random_arc()),
       };
 
-      let next_p1 = random_vec4_sphere();
-      let p2      = random_vec4_sphere();
+      let next_p1 = random_vec4_sphere(JULIA_ANIM_F);
+      let p2      = random_vec4_sphere(JULIA_ANIM_F);
 
       self.julia.anim = CubicBezier::<Vector4> {
         p0: self.julia.anim.p3,
@@ -790,12 +792,12 @@ fn main() {
     p3: Vector2::new(random_arc(), random_arc()),
   };
 
-  let next_p1 = random_vec4_sphere();
-  let p2      = random_vec4_sphere();
+  let next_p1 = random_vec4_sphere(JULIA_ANIM_F);
+  let p2      = random_vec4_sphere(JULIA_ANIM_F);
 
   let julia_anim = CubicBezier::<Vector4> {
     p0: c0_v,
-    p1: random_vec4_sphere(),
+    p1: random_vec4_sphere(JULIA_ANIM_F),
     p2: p2,
     p3: p2 + (next_p1 - p2) * 0.5,
   };
