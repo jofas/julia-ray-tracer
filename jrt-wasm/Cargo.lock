@@ -332,6 +332,7 @@ dependencies = [
  "serde_derive 1.0.89 (registry+https://github.com/rust-lang/crates.io-index)",
  "stdweb 0.4.14 (registry+https://github.com/rust-lang/crates.io-index)",
  "stdweb-derive 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "vectors 0.1.0 (git+https://github.com/jofas/vectors-rs)",
  "webgl_generator 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -690,6 +691,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "serde"
 version = "1.0.89"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "serde_derive 1.0.89 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "serde_derive"
@@ -982,6 +986,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "vectors"
+version = "0.1.0"
+source = "git+https://github.com/jofas/vectors-rs#f958a7260d9ac42bf15257e61e8a768e619c83fa"
+dependencies = [
+ "serde 1.0.89 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "void"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1163,6 +1175,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum utf8-ranges 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "796f7e48bef87609f7ade7e06495a87d5cd06c7866e6a5cbfceffc558a243737"
 "checksum vec_map 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "cac5efe5cb0fa14ec2f84f83c701c562ee63f6dcc680861b21d65c682adfb05f"
 "checksum vecmath 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "1bdd6034ee9c1e5e12485f3e4120e12777f6c81cf43bf9a73bff98ed2b479afe"
+"checksum vectors 0.1.0 (git+https://github.com/jofas/vectors-rs)" = "<none>"
 "checksum void 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d"
 "checksum webgl_generator 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4d749d56274af7e25dfe9f7ed92d4f1e7452b2de3ea6208529f31048032b5895"
 "checksum webidl 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d0f807f7488d680893f7188aa09d7672a3a0a8461975a098a2edf0a52e3fee29"
